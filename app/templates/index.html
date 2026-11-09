@@ -2,5 +2,8 @@
 
 {% block content %}
     <h1>Music Discovery Database</h1>
+    {% if session.get('username') %}
+    <p>You are signed in as <b>{{ session['username'] }}</b>.</p>
+    {% endif %}
     <p>Find music that fits how you feel. Browse songs by genre, filter by mood and save the ones you love.</p>
 {% endblock %}
