@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% if title %}
+        <title>{{ title }} - Music Discovery Database</title>
+        {% else %}
+        <title>Music Discovery Database</title>
+        {% endif %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
+    </head>
+    <body>
+        <nav>
+            <span class="brand">MusicDB</span>
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('about') }}">About Us</a>
+        </nav>
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+    </body>
+</html>

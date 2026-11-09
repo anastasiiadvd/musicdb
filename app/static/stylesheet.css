@@ -1,0 +1,394 @@
+/* Music Discovery Database - Apple Music inspired theme
+   Colours, radii and fonts are set once here as variables so the whole site stays consistent. */
+
+:root {
+    --bg: #000000;
+    --bg-elevated: #1c1c1e;
+    --bg-card: #161618;
+    --bg-input: #2c2c2e;
+    --border: rgba(255, 255, 255, 0.08);
+    --text: #f5f5f7;
+    --text-muted: #98989f;
+    --accent: #fa2d48;
+    --accent-hover: #ff4d66;
+    --accent-soft: rgba(250, 45, 72, 0.15);
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    background-image: radial-gradient(ellipse at top, rgba(250, 45, 72, 0.18), transparent 60%);
+    background-repeat: no-repeat;
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 17px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* top bar: frosted glass, stays at the top while scrolling */
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.25rem 1.5rem;
+    padding: 0.9rem clamp(1rem, 4vw, 2.5rem);
+    background: rgba(28, 28, 30, 0.72);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--border);
+}
+
+nav .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-right: 1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--text);
+}
+
+nav .brand::before {
+    content: "";
+    width: 0.65rem;
+    height: 0.65rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #fa2d48, #ff7a59);
+}
+
+nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+nav a:hover,
+nav a:focus-visible {
+    color: var(--text);
+    background: var(--bg-input);
+    outline: none;
+}
+
+/* page container */
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2.5rem clamp(1rem, 4vw, 2rem) 4rem;
+}
+
+h1,
+h2 {
+    color: var(--text);
+    text-align: center;
+    letter-spacing: -0.02em;
+}
+
+h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    margin: 0 0 0.75rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 1rem;
+}
+
+main > h1 + p,
+main > p:first-of-type {
+    font-size: 1.15rem;
+}
+
+/* about page and home page text blocks sit in a soft card */
+main > p {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.5rem;
+}
+
+/* login and register forms: a dark card in the middle of the page */
+form {
+    max-width: 420px;
+    margin: 2rem auto;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    padding: 2rem;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+form p {
+    text-align: left;
+    max-width: none;
+    margin: 0 0 1.1rem;
+    padding: 0;
+    background: none;
+    border: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+form p:has(input[type="submit"]) {
+    margin-top: 1.5rem;
+}
+
+form p.note {
+    font-weight: 400;
+    text-align: center;
+    margin-top: 1.25rem;
+}
+
+form p.note a {
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+form p.note a:hover {
+    text-decoration: underline;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    display: block;
+    width: 100%;
+    margin-top: 0.4rem;
+    padding: 0.75rem 0.9rem;
+    font: inherit;
+    font-size: 1rem;
+    color: var(--text);
+    background: var(--bg-input);
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+input[type="checkbox"] {
+    accent-color: var(--accent);
+    width: 1rem;
+    height: 1rem;
+    vertical-align: middle;
+}
+
+input[type="submit"],
+button {
+    display: inline-block;
+    width: auto;
+    background: var(--accent);
+    color: #ffffff;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 999px;
+    font: inherit;
+    font-size: 0.98rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+form input[type="submit"] {
+    width: 100%;
+}
+
+input[type="submit"]:hover,
+button:hover {
+    background: var(--accent-hover);
+}
+
+input[type="submit"]:active,
+button:active {
+    transform: scale(0.98);
+}
+
+input[type="submit"]:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--accent-soft);
+    outline-offset: 2px;
+}
+
+.error {
+    display: block;
+    margin-top: 0.35rem;
+    color: #ff6b6b;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.note {
+    font-size: 0.95rem;
+}
+
+/* messages such as "Welcome back" */
+.flashes {
+    list-style: none;
+    max-width: 640px;
+    margin: 0 auto 1.5rem;
+    padding: 0.9rem 1.1rem;
+    background: var(--bg-elevated);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: var(--radius-md);
+    font-weight: 500;
+}
+
+/* search page */
+.search-form {
+    max-width: none;
+    margin: 1.5rem 0 2rem;
+    padding: 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: flex-end;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+}
+
+.search-form > div {
+    flex: 1 1 200px;
+}
+
+.search-form label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--text-muted);
+}
+
+.search-form button {
+    width: 100%;
+}
+
+select {
+    width: 100%;
+    padding: 0.75rem 0.9rem;
+    font: inherit;
+    font-size: 1rem;
+    color: var(--text);
+    background-color: var(--bg-input);
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%2398989f' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.9rem center;
+    padding-right: 2.5rem;
+    cursor: pointer;
+}
+
+/* search results: a list of rows like an album track list */
+.table-wrap {
+    overflow-x: auto;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+}
+
+table.results {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--text);
+    font-size: 0.95rem;
+}
+
+table.results th,
+table.results td {
+    padding: 0.85rem 1rem;
+    text-align: left;
+    white-space: nowrap;
+    border-bottom: 1px solid var(--border);
+}
+
+table.results th {
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+table.results tr:not(:first-child):hover td {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+table.results tr:last-child td {
+    border-bottom: none;
+}
+
+/* result count and "no results" text */
+main > p:not(.note) {
+    text-align: left;
+}
+
+@media (max-width: 640px) {
+    body {
+        font-size: 16px;
+    }
+
+    nav {
+        padding: 0.75rem 1rem;
+    }
+
+    nav .brand {
+        width: 100%;
+    }
+
+    form {
+        padding: 1.5rem;
+    }
+
+    table.results th:nth-child(4),
+    table.results td:nth-child(4),
+    table.results th:nth-child(5),
+    table.results td:nth-child(5) {
+        display: none;
+    }
+}

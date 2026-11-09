@@ -1,0 +1,40 @@
+application:
+  name: Music Discovery Database
+  version: 1.0.0
+
+backend:
+  language: Python
+  version: 3.11
+  framework: Flask
+  version: 3.0.2
+  editor: Visual Studio Code
+  version: 1.87.0
+  modules:
+    - Flask-SQLAlchemy: 3.1.1
+    - Flask-Login: 0.6.3
+    - Flask-WTF: 1.2.1
+    - psycopg2-binary: 2.9.9
+    - bcrypt: 4.1.2
+
+frontend:
+  templating: Jinja2
+  version: 3.1.3
+  styling: CSS3
+
+database:
+  name: PostgreSQL
+  version: 16.2
+  host: localhost
+  port: 5432
+  database: music_discovery
+  username: postgres
+  password: postgres
+  prompt: postgres=#
+
+devops:
+  version_control: Git
+  version: 2.43.0
+  repository: GitHub
+  containerisation: Docker
+  docker_version: 25.0.3
+  pipeline: YAML
