@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Search Music</h1>
+    <form action="{{ url_for('search') }}" method="get" class="search-form">
+        <div>
+            <label for="genre">Genre</label>
+            <select name="genre" id="genre">
+                <option value="">Any genre</option>
+                {% for genre in genres %}
+                <option value="{{ genre[0] }}" {% if genre[0] == selected_genre %}selected{% endif %}>{{ genre[1] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="mood">Mood</label>
+            <select name="mood" id="mood">
+                <option value="">Any mood</option>
+                {% for mood in moods %}
+                <option value="{{ mood[0] }}" {% if mood[0] == selected_mood %}selected{% endif %}>{{ mood[1] }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <button type="submit">Search</button>
+        </div>
+    </form>
+
+    {% if songs %}
+    <p>{{ songs|length }} song{{ '' if songs|length == 1 else 's' }} found.</p>
+    <div class="table-wrap">
+        <table class="results">
+            <tr>
+                <th>Title</th>
+                <th>Artist</th>
+                <th>Genre</th>
+                <th>Moods</th>
+                <th>Released</th>
+                <th>Popularity</th>
+            </tr>
+            {% for song in songs %}
+            <tr>
+                <td>{{ song[0] }}</td>
+                <td>{{ song[1] }}</td>
+                <td>{{ song[2] }}</td>
+                <td>{{ song[3] }}</td>
+                <td>{{ song[4].year }}</td>
+                <td>{{ song[5] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% else %}
+    <p>No songs found. Try a different genre or mood.</p>
+    {% endif %}
+{% endblock %}
